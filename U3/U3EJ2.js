@@ -38,8 +38,31 @@
     més l'alçada més la hipotenusa).
 */
 //Escribe aquí tu solución / escriviu aquí la vostra solució:
+class Triangle {
+  constructor(base, height, rightTriangle) {
+    this.base = base;
+    this.height = height;
+    this.rightTriangle = rightTriangle;
+  }
 
+  get areaTriangle() {
+    return (this.base * this.height) / 2;  
+  }
 
+  get rightHypotenuse() {
+    if (this.rightTriangle) {
+      return Math.sqrt(this.base * this.base + this.height * this.height);
+    }
+    return undefined;
+  }
+
+  get rightPerimeter() {
+    if (this.rightTriangle) {
+      return this.base + this.height + this.rightHypotenuse;
+    }
+    return undefined;
+  }
+}
 
 
 

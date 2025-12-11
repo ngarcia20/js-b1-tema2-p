@@ -17,9 +17,12 @@
 */
 
 //Escribe aquí tu solución / escriviu aquí la vostra solució:
-
-
-
+class Triangle {
+  constructor(base, height) {
+    this.base = base;
+    this.height = height;
+  }
+}
 
 
 /**
