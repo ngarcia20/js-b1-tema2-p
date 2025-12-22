@@ -38,10 +38,65 @@
 	Finalment, crea almenys 3 objectes de la classe Triangle i fes 3 trucades a aquests nous mètodes.
 */
 //Escribe aquí tu solución / escriviu aquí la vostra solució:
+class Triangle {
+  constructor(base, height, rightTriangle) {
+    this.base = base;
+    this.height = height;
+    this.rightTriangle = rightTriangle;
+  }
+
+  get areaTriangle() {
+    return (this.base * this.height) / 2;  
+  }
+
+  get rightHypotenuse() {
+    if (this.rightTriangle) {
+      return Math.sqrt(this.base * this.base + this.height * this.height);
+    }
+    return undefined;
+  }
+
+  get rightPerimeter() {
+    if (this.rightTriangle) {
+      return this.base + this.height + this.rightHypotenuse;
+    }
+    return undefined;
+  }
+
+  static rightTriangleUnion(triangle1, triangle2) {
+	const perimetre1 = triangle1.base + triangle1.height + Math.sqrt(Math.pow(triangle1.base, 2) + Math.pow(triangle1.height, 2));
+    const perimetre2 = triangle2.base + triangle2.height + Math.sqrt(Math.pow(triangle2.base, 2) + Math.pow(triangle2.height, 2));
+
+    const restaAltures = Math.abs(triangle1.height - triangle2.height);
+
+    return perimetre1 + perimetre2 + restaAltures;
+  }
+
+  static areaPoligon(triangles) {
+	let areaTotal = 0;
+	triangles.forEach(function(triangle){
+		let areaTriangle = (triangle.base * triangle.height) / 2;
+		areaTotal += areaTriangle;
+	});
+	return areaTotal;
+  }
+
+  isEquilateral() {
+	return this.height == (this.base * Math.sqrt(3)) / 2;
+  }
+}
+
+const myTriangle1 = new Triangle(10, 5, true);
+const myTriangle2 = new Triangle(5, 10, false);
+const myTriangle3 = new Triangle(20, 15, true);
 
 
+console.log(Triangle.rightTriangleUnion(myTriangle1, myTriangle2));
 
+const trianglesArray = [myTriangle1, myTriangle2, myTriangle3];
+console.log(Triangle.areaPoligon(trianglesArray));
 
+console.log(myTriangle1.isEquilateral());
 
 
 /**
